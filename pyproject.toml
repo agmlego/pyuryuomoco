@@ -14,10 +14,7 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-dependencies = [
-    'Click',
-    'rich',
-]
+dependencies = ['Click', 'rich']
 
 [project.scripts]
 translator = "pyuryuomoco.scripts.translator:cli"
@@ -25,3 +22,6 @@ translator = "pyuryuomoco.scripts.translator:cli"
 [project.urls]
 Homepage = "https://github.com/agmlego/pyuryuomoco"
 Issues = "https://github.com/agmlego/pyuryuomoco/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["pyuryuomoco"]
