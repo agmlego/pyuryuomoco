@@ -20,7 +20,7 @@ dependencies = [
 ]
 
 [project.scripts]
-make_epub = "pyuryuomoco.scripts.translator:cli"
+translator = "pyuryuomoco.scripts.translator:cli"
 
 [project.urls]
 Homepage = "https://github.com/agmlego/pyuryuomoco"
