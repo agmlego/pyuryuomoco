@@ -25,8 +25,10 @@ cluster_ury_to_eng = {
     "ra": "ll",
     "us": "sh",
 }
-end_e_rule = re.compile(r"(?:[e]\b)")
-end_j_rule = re.compile(r"(?:[j]\b)")
+e2u_end_e_rule = re.compile(r"(?:[e]\b)")
+e2u_end_j_rule = re.compile(r"(?:[j]\b)")
+u2e_end_e_rule = re.compile(r"(?:\w+eh\b)")
+u2e_end_j_rule = re.compile(r"(?:ja\b)")
 
 
 def cluster_english(phrase: str) -> str:
@@ -58,8 +60,8 @@ def cluster_english(phrase: str) -> str:
                 f"Replacing {cnt}x of [green bold]<{idx}>[/] to become [yellow bold]{value}[/]"
             )
             phrase = phrase.replace(f"<{idx}>", value)
-    phrase = end_e_rule.sub("eh", phrase)
-    phrase = end_j_rule.sub("ja", phrase)
+    phrase = e2u_end_e_rule.sub("eh", phrase)
+    phrase = e2u_end_j_rule.sub("ja", phrase)
     return phrase
 
 
@@ -75,6 +77,8 @@ def cluster_uryuomoco(phrase: str) -> str:
     """
     mapping = list(zip(range(len(cluster_ury_to_eng)), cluster_ury_to_eng.items()))
     phrase = phrase.lower()
+    phrase = u2e_end_e_rule.sub("e", phrase)
+    phrase = u2e_end_j_rule.sub("j", phrase)
     for idx, (key, value) in mapping:
         cnt = phrase.count(key)
         if cnt:

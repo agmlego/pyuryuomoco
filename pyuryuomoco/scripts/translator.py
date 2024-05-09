@@ -53,9 +53,9 @@ def english(ctx: click.Context, phrases: str):
 
     for phrase in phrases:
         if ctx.obj["CLUSTER"]:
-            sub = cluster_english(phrase=phrase)
+            sub = cluster_english(phrase=phrase.lower())
         else:
-            sub = substitute_english(phrase=phrase)
+            sub = substitute_english(phrase=phrase.lower())
         table.add_row(phrase, sub)
 
     console = Console()
@@ -74,9 +74,9 @@ def uryuomoco(ctx: click.Context, phrases: str):
 
     for phrase in phrases:
         if ctx.obj["CLUSTER"]:
-            sub = cluster_uryuomoco(phrase=phrase)
+            sub = cluster_uryuomoco(phrase=phrase.lower())
         else:
-            sub = substitute_uryuomoco(phrase=phrase)
+            sub = substitute_uryuomoco(phrase=phrase.lower())
         table.add_row(phrase, sub)
 
     console = Console()
